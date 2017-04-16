@@ -23,7 +23,7 @@ function sxm(s,m){
 function transpose(m){
 	var t = new Array();
 	for(var i=0; i< m.length; i++){
-		args.push(m[i]);
+		t.push(m[i]);
 	}
 	return _.zip.apply(null, t);
 }
