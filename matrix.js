@@ -8,24 +8,24 @@ Created on May 2013
 
 // scalar times matrix
 function sxm(s,m){
-	var temp = new Array();
+	var sm = new Array();
 	for(var i=0; i<m.length; i++){
 		var newRow = new Array();
 		for(var j=0; j < m.length; j++){
 			newRow.push(s*m[i][j]);
 		}
-		temp.push(newRow);
+		sm.push(newRow);
 	}
-	return temp;
+	return sm;
 }
 
 // transpose any square matrix
 function transpose(m){
-	var args = new Array();
+	var t = new Array();
 	for(var i=0; i< m.length; i++){
 		args.push(m[i]);
 	}
-	return _.zip.apply(null, args);
+	return _.zip.apply(null, t);
 }
 
 
