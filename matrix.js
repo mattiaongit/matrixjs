@@ -7,11 +7,11 @@ Created on May 2013
 
 
 // scalar times matrix
-function sxm(s,m){
+function sxm(s, m) {
 	var sm = new Array();
-	for(var i=0; i<m.length; i++){
+	for(var i = 0; i < m.length; i++) {
 		var newRow = new Array();
-		for(var j=0; j < m.length; j++){
+		for(var j = 0; j < m[i].length; j++) {
 			newRow.push(s*m[i][j]);
 		}
 		sm.push(newRow);
@@ -20,9 +20,9 @@ function sxm(s,m){
 }
 
 // transpose any square matrix
-function transpose(m){
+function transpose(m) {
 	var t = new Array();
-	for(var i=0; i< m.length; i++){
+	for(var i = 0; i < m.length; i++) {
 		t.push(m[i]);
 	}
 	return _.zip.apply(null, t);
@@ -30,25 +30,25 @@ function transpose(m){
 
 
 // base 2x2 Matrix operations
-function base_determinant(m){
+function base_determinant(m) {
 	return ((m[0][0] * m[1][1]) - (m[0][1] * m[1][0]));
 }
 
-function base_inverse(m){
+function base_inverse(m) {
 	determinant = 1 / base_determinant(m);
-	return [[determinant * m[1][1], determinant * -m[0][1]], [determinant * -m[1][0], determinant * m[0][0]] ];
+	return [[determinant * m[1][1], determinant * -m[0][1]], [determinant * -m[1][0], determinant * m[0][0]]];
 }
 
 
-function subMatrix(m,i,j){
+function subMatrix(m, i, j) {
 	var submatrix = new Array();
 	var l = m.length;
-	for(var _i = 0; _i < l; _i++){
+	for(var _i = 0; _i < l; _i++) {
 
 		var newRow = new Array();
-		for(var _j=0; _j < l; _j++){
+		for(var _j = 0; _j < l; _j++) {
 
-			if( i != _i && j != _j ){
+			if( i != _i && j != _j ) {
 				newRow.push(m[_i][_j]);
 			}
 		}
@@ -58,11 +58,11 @@ function subMatrix(m,i,j){
 	return submatrix;
 }
 
-function matrixVector(m,v){
+function matrixVector(m,v) {
 	vec = new Array();
-	for(var i=0; i<m.length; i++){
+	for(var i = 0; i < m.length; i++) {
 		var sum = 0;
-		for(var j=0; j<v.length; j++){
+		for(var j = 0; j < v.length; j++) {
 			sum += m[i][j] * v[j];
 		}
 		vec.push(sum);
@@ -71,13 +71,13 @@ function matrixVector(m,v){
 }
 
 
-function mxm(m,m2){
+function mxm(m, m2) {
 	var mm = new Array();
-	for(var i = 0; i < m.length; i ++){
+	for(var i = 0; i < m.length; i ++) {
 		mm.push(new Array());
-		for(var j = 0; j < m2[0].length; j++){
+		for(var j = 0; j < m2[0].length; j++) {
 			mm[i][j] = 0;
-			for(k=0; k < m[0].length; k++){
+			for(k = 0; k < m[0].length; k++) {
 				mm[i][j] = mm[i][j] + m[i][k] * m2[k][j]
 			}
 		}
@@ -114,13 +114,13 @@ function determinant(m){
 
 
 
-function adjugate(m){
+function adjugate(m) {
 	var adj = new Array();
-	for(var i=0; i < m.length; i++){
+	for(var i = 0; i < m.length; i++) {
 		var newRow = new Array();
-		for(var j = 0; j < m.length; j++){
+		for(var j = 0; j < m.length; j++) {
 			checkerboard = ((i+j) % 2 === 0) ? 1 : -1;
-			newRow.push(determinant(subMatrix(m,i,j)) * checkerboard);
+			newRow.push(determinant(subMatrix(m, i, j)) * checkerboard);
 		}
 		adj.push(newRow);
 	}
@@ -129,7 +129,7 @@ function adjugate(m){
 
 
 function inverse(m){
-	return sxm(1/determinant(m),transpose(adjugate(m)));
+	return sxm(1/determinant(m), transpose(adjugate(m)));
 }
 
 
