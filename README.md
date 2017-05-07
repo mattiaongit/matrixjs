@@ -7,6 +7,16 @@ Simple JS library to compute some of the basic matrix functions:
 ```javascript
 sxm(scalar,matrix)
 ```
+e.g:
+```javascript
+scalar = 3
+matrix = [[7,5,-10], [3,8,0]]
+sm = sxm(scalar, matrix)
+
+JSON.stringify(sm)
+"[[21,15,-30],[9,24,0]]"
+```
+
 
 - Matrix vector multiplication
 ```javascript
